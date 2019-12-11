@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 import daphne.example.cathos_proyecto.R;
@@ -22,7 +24,6 @@ public class ListAdapter extends BaseAdapter {
     }
     @Override
     public int getCount() {
-
         return this.items.size();
     }
 
@@ -50,8 +51,9 @@ public class ListAdapter extends BaseAdapter {
         titulo.setText(this.items.get(i).getTitle());
         descripcion.setText(this.items.get(i).getDescripsion());
 
-
+        Glide.with(view).load(items.get(i).getUrl()).centerCrop().into(image);
         return view;
 
     }
+
 }
