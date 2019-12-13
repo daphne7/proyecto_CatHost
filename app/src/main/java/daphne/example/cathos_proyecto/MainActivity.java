@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import cz.msebera.android.httpclient.Header;
+import daphne.example.cathos_proyecto.HomesApp.HomesApp;
 import daphne.example.cathos_proyecto.collection.Item;
 import daphne.example.cathos_proyecto.collection.ListAdapter;
 
@@ -57,6 +58,9 @@ public class MainActivity extends AppCompatActivity
         loadComponents();
 
     }
+
+
+
     private void loadComponents(){
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -100,10 +104,21 @@ public class MainActivity extends AppCompatActivity
         });
 
 
+
+
+
+
+
+
     }
 
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
 
     @Override
@@ -116,12 +131,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -146,6 +156,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_facebook) {
 
         } else if (id == R.id.nav_buscar) {
+            Intent publicar = new Intent(this, HomesApp.class);
+            startActivity(publicar);
 
         } else if (id == R.id.nav_gratis) {
 

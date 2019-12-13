@@ -1,4 +1,4 @@
-package daphne.example.cathos_proyecto;
+package daphne.example.cathos_proyecto.HomesApp;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -6,18 +6,17 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.ListView;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.RequestParams;
+import daphne.example.cathos_proyecto.CustomAdapter;
+import daphne.example.cathos_proyecto.R;
 
-public class iniciar_sesion extends AppCompatActivity {
-    EditText tus, tcs;
+public class Results extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_iniciar_sesion);
+        setContentView(R.layout.activity_results);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -27,19 +26,22 @@ public class iniciar_sesion extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                loadComponents();
             }
         });
+       loadComponents();
     }
 
-    public void loadComponents() {
-        tus = (EditText) findViewById(R.id.email_txt);
-        tcs = (EditText) findViewById(R.id.password_txt);
-        AsyncHttpClient client = new AsyncHttpClient();
-        RequestParams params = new RequestParams();
-        params.add("txt_usuario_sesion", tus.getText().toString());
-        params.add("txt_password_sesion", tcs.getText().toString());
-        //metodo para que el usuario y contrasena no queden en blanco
+    private void loadComponents() {
+        ListView list = findViewById(R.id.casaList);
+        if (Data.LISTINGS != null) {
+            CustomAdapter adapter = new CustomAdapter(this,Data.LISTINGS);
+
+            list.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+
+        }
+
+
 
     }
 

@@ -32,4 +32,6 @@
     <string name="txt_usuario_sesion">Correo Electronico</string>
     <string name="ini_sesion">Inicie Sesion</string>
     <string name="btn_aceptar_sesion">Ingresar</string>
+    <string name="title_activity_homes_app">HomesApp</string>
+    <string name="title_activity_results">Results</string>
 </resources>
